@@ -2,6 +2,7 @@ import {createStackNavigator} from "react-navigation-stack";
 import {createAppContainer} from 'react-navigation'
 import AlbumDetailsScreen from "../components/AlbumDetailsScreen";
 import AlbumsScreen from "../components/AlbumsScreen";
+import PhotoDetailsScreen from "../components/PhotoDetailsScreen";
 
 
 const screens = {
@@ -15,6 +16,12 @@ const screens = {
         screen: AlbumDetailsScreen,
         navigationOptions: {
             title: 'Album Details',
+        }
+    },
+    PhotoDetails: {
+        screen: PhotoDetailsScreen,
+        navigationOptions: {
+            title: 'Single Photo Details',
         }
     }
 }

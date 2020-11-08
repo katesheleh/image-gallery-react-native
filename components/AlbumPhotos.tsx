@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Button, FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {Button, FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../redux/store";
 import {getAlbumPhotosTC} from "../redux/photos-reducer";
@@ -7,7 +7,7 @@ import {PhotosResponseType} from "../api/photos-api";
 
 
 export default function AlbumPhotos(props: PropsType) {
-    const photos = useSelector<AppRootStateType,{ [key: number]: PhotosResponseType[] }>(store => store.photos.albumPhotos)
+    const photos = useSelector<AppRootStateType, { [key: number]: PhotosResponseType[] }>(store => store.photos.albumPhotos)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function AlbumPhotos(props: PropsType) {
                       horizontal
                       renderItem={({item}) => (
                           <View style={styles.list}>
-                             <Text>{item.id} - id</Text>
+                              <Text>{item.id} - id</Text>
                               <Text>{item.albumId} - album id</Text>
                               <Image style={styles.img} source={{uri: item.thumbnailUrl}}/>
                           </View>
@@ -49,5 +49,6 @@ const styles = StyleSheet.create({
 
 
 type PropsType = {
-    albumId: number
+    albumId: number,
+    navigation: any
 }

@@ -1,13 +1,10 @@
 import React, {useEffect} from 'react';
-import {Button, FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import {getUserAlbumsTC} from "../redux/albums-reducer";
 import {AppRootStateType} from "../redux/store";
 import {AlbumResponseType} from "../api/albums-api";
 import AlbumPhotos from "./AlbumPhotos";
-import {Link} from "react-router-native";
-import AlbumDetailsScreen from "./AlbumDetailsScreen";
-
 
 export default function UserAlbums(props: PropsType) {
     const albums = useSelector<AppRootStateType, AlbumResponseType[]>(store => store.albums.userAlbums)

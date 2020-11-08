@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Button, FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {Button, FlatList, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../redux/store";
 import {getAlbumPhotosTC} from "../redux/photos-reducer";
@@ -17,6 +17,7 @@ export default function AlbumDetailsScreen(props: PropsType) {
     const pressHandler = () => {
         props.navigation.goBack()
     }
+
     return (
         <View style={styles.container}>
             <Button title={'back'} onPress={pressHandler}/>
@@ -27,7 +28,10 @@ export default function AlbumDetailsScreen(props: PropsType) {
                           keyExtractor={item => item.id.toString()}
                           renderItem={({item}) => (
                               <View style={styles.list}>
-                                  <Image style={styles.img} source={{uri: item.thumbnailUrl}}/>
+                                  <TouchableOpacity
+                                      onPress={() => props.navigation.navigate('PhotoDetails', {title: item.title, url: item.url})}>
+                                      <Image style={styles.img} source={{uri: item.thumbnailUrl}}/>
+                                  </TouchableOpacity>
                                   <Text>{item.title}</Text>
                               </View>
                           )}/>
@@ -56,4 +60,5 @@ const styles = StyleSheet.create({
 
 type PropsType = {
     navigation: any
+    pressHandler: () => void
 }

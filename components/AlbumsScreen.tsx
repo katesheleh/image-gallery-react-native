@@ -16,7 +16,6 @@ export default function AlbumsScreen({navigation}: any) {
 
     const pressHandler = (userId: number, id: number, title: string) => {
         navigation.navigate('AlbumDetails', {userId, id, title})
-        //navigation.push('AlbumDetails')
     }
     return (
         <View style={styles.container}>
