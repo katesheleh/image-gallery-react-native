@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
-import {Button, FlatList, StyleSheet, Text, View} from 'react-native';
+import {Button, FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import {getUserAlbumsTC} from "../redux/albums-reducer";
 import {AppRootStateType} from "../redux/store";
 import {AlbumResponseType} from "../api/albums-api";
 import AlbumPhotos from "./AlbumPhotos";
+import {Link} from "react-router-native";
+import AlbumDetailsScreen from "./AlbumDetailsScreen";
 
 
 export default function UserAlbums(props: PropsType) {
@@ -20,7 +22,11 @@ export default function UserAlbums(props: PropsType) {
             <FlatList data={albums} keyExtractor={item => item.id.toString()} renderItem={({item}) => (
                 <View style={styles.list}>
                     <Text>id:{item.id} - {item.title}</Text>
-                    <Button title='Details' onPress={() => console.log('click')}/>
+
+                    <TouchableOpacity onPress={() => props.pressHandler(item.userId, item.id, item.title)}>
+                        <Text>Details</Text>
+                    </TouchableOpacity>
+
                     <AlbumPhotos albumId={item.id}/>
                 </View>
             )}/>
@@ -43,5 +49,6 @@ const styles = StyleSheet.create({
 
 
 type PropsType = {
-    id: number
+    id: number,
+    pressHandler: (userId: number, id: number, title: string) => void
 }

@@ -21,8 +21,8 @@ export default function AlbumPhotos(props: PropsType) {
                       horizontal
                       renderItem={({item}) => (
                           <View style={styles.list}>
-{/*                              <Text>{item.id} - id</Text>
-                              <Text>{item.albumId} - album id</Text>*/}
+                             <Text>{item.id} - id</Text>
+                              <Text>{item.albumId} - album id</Text>
                               <Image style={styles.img} source={{uri: item.thumbnailUrl}}/>
                           </View>
                       )}/>

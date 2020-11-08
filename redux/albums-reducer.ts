@@ -5,7 +5,7 @@ import {AlbumResponseType, albumsApi} from "../api/albums-api";
 
 let initialState: InitialStateType = {} as InitialStateType;
 
-export const albumsReducer = (state: InitialStateType = initialState, action: ActionsType) => { //ActionsType
+export const albumsReducer = (state: InitialStateType = initialState, action: ActionsType) => {
     switch (action.type) {
         case 'LOAD_ALBUMS':
             return {...state, userAlbums: action.userAlbums}
