@@ -8,7 +8,7 @@ import {globalStyles} from '../../styles/global';
 import ActionButton from '../ActionButton';
 
 
-export default function AlbumDetailsScreen(props: PropsType) {
+const AlbumDetailsScreen = (props: PropsType) => {
     const albumId = props.navigation.getParam('id');
     const photos = useSelector<AppRootStateType, PhotosResponseType[]>(store => store.photos.albumPhotos[albumId])
     const dispatch = useDispatch()
@@ -36,13 +36,15 @@ export default function AlbumDetailsScreen(props: PropsType) {
                                   })}>
                                   <Image style={[globalStyles.img, styles.img]} source={{uri: item.thumbnailUrl}}/>
                               </TouchableOpacity>
-                              <Text style={globalStyles.contentText}>{item.title}</Text>
+                              <Text style={[globalStyles.contentText, styles.content]}>{item.title}</Text>
                           </View>
                       )}/>
         </View>
     )
 }
 
+
+export default AlbumDetailsScreen
 
 // STYLES
 export const windowWidth = Dimensions.get('window').width
@@ -57,7 +59,10 @@ const styles = StyleSheet.create({
     img: {
         width: (windowWidth - 100) / 2, // 50% width (100 => paddings sum in the row)
         height: (windowWidth - 100) / 2,
-        marginRight: 10,
+    },
+    content: {
+        width: (windowWidth - 100) / 2, // 50% width (100 => paddings sum in the row)
+        paddingLeft: 15
     }
 });
 

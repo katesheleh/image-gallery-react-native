@@ -5,7 +5,7 @@ import {Dimensions} from 'react-native';
 import ActionButton from '../ActionButton';
 
 
-export default function PhotoDetailsScreen(props: PropsType) {
+const PhotoDetailsScreen = (props: PropsType) => {
 
     const pressHandler = () => props.navigation.goBack()
 
@@ -20,6 +20,8 @@ export default function PhotoDetailsScreen(props: PropsType) {
     )
 }
 
+
+export default PhotoDetailsScreen
 
 // STYLES
 export const windowWidth = Dimensions.get('window').width

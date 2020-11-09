@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
-import {FlatList, Image, StyleSheet, View} from 'react-native';
+import {FlatList, Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../redux/store';
 import {getAlbumPhotosTC} from '../redux/photos-reducer';
 import {PhotosResponseType} from '../api/photos-api';
 import {globalStyles} from '../styles/global';
+import {withNavigation} from 'react-navigation';
 
 
-export default function AlbumPhotos(props: PropsType) {
+const AlbumPhotos = (props: PropsType) => {
     const photos = useSelector<AppRootStateType, { [key: number]: PhotosResponseType[] }>(store => store.photos.albumPhotos)
     const dispatch = useDispatch()
 
@@ -22,12 +23,17 @@ export default function AlbumPhotos(props: PropsType) {
                       horizontal
                       renderItem={({item}) => (
                           <View>
-                              <Image style={[globalStyles.img, styles.img]} source={{uri: item.thumbnailUrl}}/>
+                              <TouchableOpacity
+                                  onPress={() => props.pressHandler(item.title, item.url)}>
+                                  <Image style={[globalStyles.img, styles.img]} source={{uri: item.thumbnailUrl}}/>
+                              </TouchableOpacity>
                           </View>
                       )}/>
         </View>
     );
 }
+
+export default withNavigation(AlbumPhotos)
 
 // STYLES
 const styles = StyleSheet.create({
@@ -41,5 +47,5 @@ const styles = StyleSheet.create({
 // TYPES
 type PropsType = {
     albumId: number,
-    navigation?: any
+    pressHandler: (title: string, url: string) => void
 }

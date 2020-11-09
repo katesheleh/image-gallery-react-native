@@ -3,7 +3,7 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {globalStyles} from '../styles/global';
 
 
-export default function ActionButton(props: PropsType) {
+const ActionButton = (props: PropsType) => {
     return (
         <View>
             <TouchableOpacity onPress={props.onPress}>
@@ -13,6 +13,7 @@ export default function ActionButton(props: PropsType) {
     )
 }
 
+export default ActionButton
 
 // TYPES
 type PropsType = {

@@ -8,7 +8,7 @@ import AlbumPhotos from './AlbumPhotos';
 import {globalStyles} from '../styles/global';
 import ActionButton from './ActionButton';
 
-export default function UserAlbums(props: PropsType) {
+const UserAlbums = (props: PropsType) => {
     const albums = useSelector<AppRootStateType, AlbumResponseType[]>(store => store.albums.userAlbums)
     const dispatch = useDispatch()
 
@@ -27,16 +27,18 @@ export default function UserAlbums(props: PropsType) {
                     <Text style={globalStyles.titleText}>{item.title}</Text>
                     <ActionButton onPress={() => props.pressHandler(item.userId, item.id, item.title)}
                                   text='Show Details'/>
-                    <AlbumPhotos albumId={item.id}/>
+                    <AlbumPhotos albumId={item.id} pressHandler={props.photosPressHandler}/>
                 </View>
 
             )}/>
     )
 }
 
+export default UserAlbums
 
 // TYPES
 type PropsType = {
     id: number,
-    pressHandler: (userId: number, id: number, title: string) => void
+    pressHandler: (userId: number, id: number, title: string) => void,
+    photosPressHandler: (title: string, url: string) => void
 }
