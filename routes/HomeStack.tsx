@@ -1,8 +1,8 @@
 import {createStackNavigator} from "react-navigation-stack";
 import {createAppContainer} from 'react-navigation'
-import AlbumDetailsScreen from "../components/AlbumDetailsScreen";
-import AlbumsScreen from "../components/AlbumsScreen";
-import PhotoDetailsScreen from "../components/PhotoDetailsScreen";
+import AlbumDetailsScreen from "../components/screens/AlbumDetailsScreen";
+import AlbumsScreen from "../components/screens/AlbumsScreen";
+import PhotoDetailsScreen from "../components/screens/PhotoDetailsScreen";
 
 
 const screens = {
@@ -27,8 +27,8 @@ const screens = {
 }
 const HomeStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
-        headerTintColor: '#444',
-        headerStyle: {backgroundColor: '#eee', height: 60}
+        headerTintColor: '#fff',
+        headerStyle: {backgroundColor: '#256738', height: 60}
     }
 })
 

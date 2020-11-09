@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import {useDispatch, useSelector} from "react-redux";
-import {getUserTC} from "../redux/users-reducer";
-import {UsersResponseType} from "../api/users-api";
-import {AppRootStateType} from "../redux/store";
-import UserAlbums from "./UserAlbums";
+import {View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUserTC} from '../../redux/users-reducer';
+import {UsersResponseType} from '../../api/users-api';
+import {AppRootStateType} from '../../redux/store';
+import UserAlbums from '../UserAlbums';
+import {globalStyles} from '../../styles/global';
 
 
 export default function AlbumsScreen({navigation}: any) {
@@ -18,16 +19,8 @@ export default function AlbumsScreen({navigation}: any) {
         navigation.navigate('AlbumDetails', {userId, id, title})
     }
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
             {currentUser && <UserAlbums id={currentUser.id} pressHandler={pressHandler}/>}
         </View>
-    );
+    )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f1f1f1',
-    }
-});
-
