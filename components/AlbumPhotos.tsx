@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
-import {FlatList, Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../redux/store';
-import {getAlbumPhotosTC} from '../redux/photos-reducer';
-import {PhotosResponseType} from '../api/photos-api';
-import {globalStyles} from '../styles/global';
-import {withNavigation} from 'react-navigation';
+import React, {useEffect} from 'react'
+import {FlatList, Image, StyleSheet, TouchableOpacity, View} from 'react-native'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppRootStateType} from '../redux/store'
+import {getAlbumPhotosTC} from '../redux/photos-reducer'
+import {PhotosResponseType} from '../api/photos-api'
+import {globalStyles} from '../styles/global'
 
 
-const AlbumPhotos = (props: PropsType) => {
+export const AlbumPhotos = (props: PropsType) => {
     const photos = useSelector<AppRootStateType, { [key: number]: PhotosResponseType[] }>(store => store.photos.albumPhotos)
     const dispatch = useDispatch()
 
@@ -30,18 +29,18 @@ const AlbumPhotos = (props: PropsType) => {
                           </View>
                       )}/>
         </View>
-    );
+    )
 }
 
-export default withNavigation(AlbumPhotos)
+export default React.memo(AlbumPhotos)
 
 // STYLES
 const styles = StyleSheet.create({
     img: {
         width: 100,
         height: 100,
-        marginRight: 10
-    }
+        marginRight: 10,
+    },
 })
 
 // TYPES

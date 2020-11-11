@@ -1,5 +1,4 @@
 import {Dispatch} from 'redux'
-import {errorAC, ErrorACType, isFetchingACType} from './request-reducer'
 import {usersApi, UsersResponseType} from '../api/users-api'
 
 
@@ -21,7 +20,7 @@ export const loadUsersAC = (usersData: UsersResponseType[]) => ({type: 'LOAD_USE
 export const loadCurrentUserAC = (currentUser: UsersResponseType) => ({type: 'LOAD_CURRENT_USER', currentUser} as const)
 
 // THUNK
-export const getUsersTC = () => (dispatch: Dispatch<isFetchingACType | ErrorACType | ActionsType>) => {
+export const getUsersTC = () => (dispatch: Dispatch<ActionsType>) => {
     usersApi.usersList()
         .then(res => {
             dispatch(loadUsersAC(res.data))
@@ -31,13 +30,13 @@ export const getUsersTC = () => (dispatch: Dispatch<isFetchingACType | ErrorACTy
         })
 }
 
-export const getUserTC = (userId: number) => (dispatch: Dispatch<isFetchingACType | ErrorACType | ActionsType>) => {
+export const getUserTC = (userId: number) => (dispatch: Dispatch<ActionsType>) => {
     usersApi.user(userId)
         .then(res => {
             dispatch(loadCurrentUserAC(res.data))
         })
         .catch((error) => {
-            dispatch(errorAC(error.response.data.error))
+            console.log(error)
         })
 }
 

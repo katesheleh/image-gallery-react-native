@@ -1,5 +1,4 @@
 import {Dispatch} from 'redux'
-import {errorAC, ErrorACType, isFetchingACType} from './request-reducer'
 import {AlbumResponseType, albumsApi} from '../api/albums-api'
 
 
@@ -8,7 +7,7 @@ let initialState: InitialStateType = {} as InitialStateType
 export const albumsReducer = (state: InitialStateType = initialState, action: ActionsType) => {
     switch (action.type) {
         case 'LOAD_ALBUMS':
-            return {...state, userAlbums: [...state.userAlbums, ...action.userAlbums]}
+            return {...state, userAlbums: action.userAlbums}
         default:
             return state
     }
@@ -19,13 +18,13 @@ export const loadAlbumsAC = (userAlbums: AlbumResponseType[]) => ({type: 'LOAD_A
 
 
 // THUNK
-export const getUserAlbumsTC = (userId: number) => (dispatch: Dispatch<isFetchingACType | ErrorACType | ActionsType>) => {
+export const getUserAlbumsTC = (userId: number) => (dispatch: Dispatch<ActionsType>) => {
     albumsApi.userAlbums(userId)
         .then(res => {
             dispatch(loadAlbumsAC(res.data))
         })
         .catch((error) => {
-            dispatch(errorAC(error.response.data.error))
+            console.log(error)
         })
 }
 

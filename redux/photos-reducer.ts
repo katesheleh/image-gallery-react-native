@@ -1,5 +1,4 @@
 import {Dispatch} from 'redux'
-import {errorAC, ErrorACType, isFetchingAC, isFetchingACType} from './request-reducer'
 import {photosApi, PhotosResponseType} from '../api/photos-api'
 
 
@@ -29,16 +28,13 @@ export const loadAlbumPhotosAC = (albumPhotos: PhotosResponseType[], albumId: nu
 } as const)
 
 // THUNK
-export const getAlbumPhotosTC = (albumId: number) => (dispatch: Dispatch<isFetchingACType | ErrorACType | ActionsType>) => {
-    dispatch(isFetchingAC(true))
+export const getAlbumPhotosTC = (albumId: number) => (dispatch: Dispatch<ActionsType>) => {
     photosApi.albumPhotos(albumId)
         .then(res => {
             dispatch(loadAlbumPhotosAC(res.data, albumId))
-            dispatch(isFetchingAC(false))
         })
         .catch((error) => {
-            dispatch(errorAC(error.response.data.error))
-            dispatch(isFetchingAC(false))
+            console.log(error)
         })
 }
 
