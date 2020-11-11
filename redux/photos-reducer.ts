@@ -1,11 +1,11 @@
 import {Dispatch} from 'redux'
-import {errorAC, ErrorACType, isFetchingACType} from "./request-reducer";
-import {photosApi, PhotosResponseType} from "../api/photos-api";
+import {errorAC, ErrorACType, isFetchingAC, isFetchingACType} from './request-reducer'
+import {photosApi, PhotosResponseType} from '../api/photos-api'
 
 
 let initialState: InitialStateType = {
-    albumPhotos: {} as { [key: number]: PhotosResponseType[] }
-} as InitialStateType;
+    albumPhotos: {} as { [key: number]: PhotosResponseType[] },
+} as InitialStateType
 
 export const photosReducer = (state: InitialStateType = initialState, action: ActionsType) => {
     switch (action.type) {
@@ -13,11 +13,11 @@ export const photosReducer = (state: InitialStateType = initialState, action: Ac
             return {
                 ...state, albumPhotos: {
                     ...state.albumPhotos,
-                    [action.albumId]: action.albumPhotos
-                }
+                    [action.albumId]: action.albumPhotos,
+                },
             }
         default:
-            return state;
+            return state
     }
 }
 
@@ -25,22 +25,25 @@ export const photosReducer = (state: InitialStateType = initialState, action: Ac
 export const loadAlbumPhotosAC = (albumPhotos: PhotosResponseType[], albumId: number) => ({
     type: 'LOAD_PHOTOS',
     albumPhotos,
-    albumId
+    albumId,
 } as const)
 
 // THUNK
 export const getAlbumPhotosTC = (albumId: number) => (dispatch: Dispatch<isFetchingACType | ErrorACType | ActionsType>) => {
+    dispatch(isFetchingAC(true))
     photosApi.albumPhotos(albumId)
         .then(res => {
             dispatch(loadAlbumPhotosAC(res.data, albumId))
+            dispatch(isFetchingAC(false))
         })
         .catch((error) => {
             dispatch(errorAC(error.response.data.error))
+            dispatch(isFetchingAC(false))
         })
 }
 
 // TYPES
-type InitialStateType = {
+export type InitialStateType = {
     albumPhotos: { [key: number]: PhotosResponseType[] }
 }
 

@@ -1,16 +1,16 @@
 import {Dispatch} from 'redux'
-import {errorAC, ErrorACType, isFetchingACType} from "./request-reducer";
-import {AlbumResponseType, albumsApi} from "../api/albums-api";
+import {errorAC, ErrorACType, isFetchingACType} from './request-reducer'
+import {AlbumResponseType, albumsApi} from '../api/albums-api'
 
 
-let initialState: InitialStateType = {} as InitialStateType;
+let initialState: InitialStateType = {} as InitialStateType
 
 export const albumsReducer = (state: InitialStateType = initialState, action: ActionsType) => {
     switch (action.type) {
         case 'LOAD_ALBUMS':
-            return {...state, userAlbums: action.userAlbums}
+            return {...state, userAlbums: [...state.userAlbums, ...action.userAlbums]}
         default:
-            return state;
+            return state
     }
 }
 

@@ -1,18 +1,18 @@
 import {Dispatch} from 'redux'
-import {errorAC, ErrorACType, isFetchingAC, isFetchingACType} from "./request-reducer";
-import {usersApi, UsersResponseType} from "../api/users-api";
+import {errorAC, ErrorACType, isFetchingACType} from './request-reducer'
+import {usersApi, UsersResponseType} from '../api/users-api'
 
 
-let initialState: InitialStateType = {} as InitialStateType;
+let initialState: InitialStateType = {} as InitialStateType
 
 export const usersReducer = (state: InitialStateType = initialState, action: any) => { //ActionsType
     switch (action.type) {
         case 'LOAD_USERS':
-            return {...state, usersData: action.usersData}
+            return {...state, usersData: [...state.usersData, ...action.usersData]}
         case 'LOAD_CURRENT_USER':
             return {...state, currentUser: action.currentUser}
         default:
-            return state;
+            return state
     }
 }
 
@@ -27,7 +27,7 @@ export const getUsersTC = () => (dispatch: Dispatch<isFetchingACType | ErrorACTy
             dispatch(loadUsersAC(res.data))
         })
         .catch((error) => {
-            dispatch(errorAC(error.response.data.error))
+            console.log(error)
         })
 }
 
