@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {store} from "./redux/store";
 import {Provider} from 'react-redux';
+import HomeStack from "./routes/HomeStack";
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import RootDrawerNavigator from "./routes/RootDrawerNavigator";
 
 const getFonts = () => Font.loadAsync({
     Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
@@ -17,7 +17,7 @@ export default function App() {
     if (fontLoaded) {
         return (
             <Provider store={store}>
-                <RootDrawerNavigator/>
+                <HomeStack/>
             </Provider>
         )
 

@@ -1,19 +1,16 @@
-import React from 'react';
 import {createStackNavigator} from "react-navigation-stack";
+import {createAppContainer} from 'react-navigation'
 import AlbumDetailsScreen from "../components/screens/AlbumDetailsScreen";
-import AlbumsScreen from "../components/screens/AlbumsScreen";
+import AlbumsScreen from "../components/screens/AlbumsScreen/AlbumsScreen";
 import PhotoDetailsScreen from "../components/screens/PhotoDetailsScreen";
-import Header from "../components/common/Header";
 
 
 const screens = {
     Home: {
         screen: AlbumsScreen,
-        navigationOptions: ({navigation}: any) => {
-            return {
-                headerTitle: () => <Header navigation={navigation} title='All Albums'/>
-            }
-        },
+        navigationOptions: {
+            title: 'All Albums',
+        }
     },
     AlbumDetails: {
         screen: AlbumDetailsScreen,
@@ -31,8 +28,8 @@ const screens = {
 const HomeStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         headerTintColor: '#fff',
-        headerStyle: {backgroundColor: '#256738', height: 70}
+        headerStyle: {backgroundColor: '#256738', height: 60}
     }
 })
 
-export default HomeStack
+export default createAppContainer(HomeStack)

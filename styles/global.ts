@@ -17,6 +17,7 @@ export const globalStyles = StyleSheet.create({
     titleText: {
         fontFamily: 'MontserratBold',
         fontSize: 17,
+        textTransform: 'capitalize',
         marginBottom: 10,
         color: '#256738',
         textAlign: 'center'
