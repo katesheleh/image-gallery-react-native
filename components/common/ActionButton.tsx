@@ -1,14 +1,13 @@
 import React from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {MaterialIcons} from '@expo/vector-icons'
-import {globalStyles} from '../../styles/global'
 
 
 const ActionButton = (props: PropsType) => {
     return (
         <View>
             <TouchableOpacity onPress={props.onPress}>
-                <Text style={[globalStyles.actionText]}>
+                <Text style={[styles.actionText]}>
                     {props.icon && <MaterialIcons name={props.icon} style={styles.icon}/>}
                     {props.text}
                 </Text>
@@ -17,7 +16,7 @@ const ActionButton = (props: PropsType) => {
     )
 }
 
-export default React.memo(ActionButton)
+export default ActionButton
 
 const styles = StyleSheet.create({
     icon: {
@@ -26,6 +25,17 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         lineHeight: 1,
     },
+    actionText: {
+        backgroundColor: '#256738',
+        color: '#fff',
+        padding: 15,
+        textAlign: 'center',
+        textTransform: 'uppercase',
+        fontFamily: 'MontserratMedium',
+        fontSize: 12,
+        marginBottom: 10,
+        borderRadius: 7
+    }
 })
 
 // TYPES

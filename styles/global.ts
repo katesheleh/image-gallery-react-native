@@ -22,18 +22,6 @@ export const globalStyles = StyleSheet.create({
         color: '#256738',
         textAlign: 'center'
     },
-    actionText: {
-        backgroundColor: '#256738',
-        color: '#fff',
-        paddingVertical: 15,
-        textAlign: 'center',
-        textTransform: 'uppercase',
-        fontFamily: 'MontserratMedium',
-        fontSize: 12,
-        marginBottom: 10,
-        borderRadius: 7
-
-    },
     contentText: {
         lineHeight: 20,
         fontSize: 14,

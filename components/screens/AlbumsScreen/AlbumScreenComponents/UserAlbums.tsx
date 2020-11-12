@@ -26,7 +26,7 @@ const UserAlbums = (props: PropsType) => {
                     <View style={globalStyles.item}>
                         <Text style={globalStyles.titleText}>{item.title}</Text>
                         <ActionButton onPress={() => props.pressHandler(item.userId, item.id, item.title)}
-                                      text='Show Details' icon='palette'/>
+                                      text='Show Details'/>
                         <AlbumPhotos albumId={item.id} pressHandler={props.photosPressHandler}/>
                     </View>
 
@@ -35,7 +35,7 @@ const UserAlbums = (props: PropsType) => {
     )
 }
 
-export default React.memo(UserAlbums)
+export default UserAlbums
 
 
 // STYLES

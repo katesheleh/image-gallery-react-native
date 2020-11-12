@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
-import {FlatList, Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../../../../redux/store';
-import {getAlbumPhotosTC} from '../../../../redux/photos-reducer';
-import {PhotosResponseType} from '../../../../api/photos-api';
-import {globalStyles} from '../../../../styles/global';
-import {withNavigation} from 'react-navigation';
+import React, {useEffect} from 'react'
+import {FlatList, Image, StyleSheet, TouchableOpacity, View} from 'react-native'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppRootStateType} from '../../../../redux/store'
+import {getAlbumPhotosTC} from '../../../../redux/photos-reducer'
+import {PhotosResponseType} from '../../../../api/photos-api'
+import {globalStyles} from '../../../../styles/global'
 
 
 const AlbumPhotos = (props: PropsType) => {
@@ -30,10 +29,10 @@ const AlbumPhotos = (props: PropsType) => {
                           </View>
                       )}/>
         </View>
-    );
+    )
 }
 
-export default withNavigation(AlbumPhotos)
+export default AlbumPhotos
 
 // STYLES
 const styles = StyleSheet.create({

@@ -1,20 +1,10 @@
 import {albumsReducer, InitialStateType, loadAlbumsAC} from './albums-reducer'
-import {AlbumResponseType} from '../api/albums-api'
-
 
 let initState: InitialStateType
-let userAlbums: AlbumResponseType[]
 
 beforeEach(() => {
-
     initState = {
-        userAlbums: [
-            {
-                userId: 3,
-                id: 21,
-                title: 'repudiandae voluptatem optio est consequatur rem in temporibus et',
-            },
-        ],
+        userAlbums: [],
     }
 })
 
@@ -35,6 +25,6 @@ test('All user albums should be loaded', () => {
     const action = loadAlbumsAC(newUserAlbum)
     const endState = albumsReducer(initState, action)
 
-    expect(endState.userAlbums.length).toBe(3)
-    expect(endState.userAlbums[3].title).toBe('quibusdam saepe ipsa vel harum')
+    expect(endState.userAlbums.length).toBe(2)
+    expect(endState.userAlbums[1].title).toBe('quibusdam saepe ipsa vel harum')
 })

@@ -10,7 +10,7 @@ const Preloader = () => {
     )
 }
 
-export default React.memo(Preloader)
+export default Preloader
 
 // STYLES
 const styles = StyleSheet.create({})

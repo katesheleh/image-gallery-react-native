@@ -1,13 +1,9 @@
 import React from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import {MaterialIcons} from '@expo/vector-icons'
 
 const Header = (props: PropsType) => {
-    const openMenu = () => props.navigation.openDrawer()
-
     return (
         <View style={styles.header}>
-            <MaterialIcons name='menu' style={styles.icon} onPress={openMenu}/>
             <View>
                 <Text style={styles.headerText}>{props.title}</Text>
             </View>
@@ -15,7 +11,7 @@ const Header = (props: PropsType) => {
     )
 }
 
-export default React.memo(Header)
+export default Header
 
 // STYLES
 const styles = StyleSheet.create({

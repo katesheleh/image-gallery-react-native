@@ -25,7 +25,7 @@ const AlbumDetailsScreen = (props: PropsType) => {
 
             <Text style={globalStyles.titleText}>{props.navigation.getParam('title')}</Text>
 
-            <ActionButton onPress={pressHandler} text='Back' icon='undo'/>
+            <ActionButton onPress={pressHandler} text='Back'/>
 
             <FlatList data={photos}
                       keyExtractor={item => item.id.toString()}
@@ -46,10 +46,10 @@ const AlbumDetailsScreen = (props: PropsType) => {
 }
 
 
-export default React.memo(AlbumDetailsScreen)
+export default AlbumDetailsScreen
 
 // STYLES
-export const windowWidth = Dimensions.get('window').width
+export const windowWidth = Dimensions.get('screen').width
 
 const styles = StyleSheet.create({
     itemDetails: {

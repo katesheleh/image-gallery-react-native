@@ -9,7 +9,7 @@ const PhotoDetailsScreen = (props: PropsType) => {
 
     return (
         <View style={globalStyles.container}>
-            <ActionButton onPress={pressHandler} text='Back' icon='undo'/>
+            <ActionButton onPress={pressHandler} text='Back'/>
             <View style={globalStyles.item}>
                 <Text style={globalStyles.titleText}>{props.navigation.getParam('title')}</Text>
                 <Image style={[globalStyles.img, styles.img]} source={{uri: props.navigation.getParam('url')}}/>
@@ -19,10 +19,10 @@ const PhotoDetailsScreen = (props: PropsType) => {
 }
 
 
-export default React.memo(PhotoDetailsScreen)
+export default PhotoDetailsScreen
 
 // STYLES
-export const windowWidth = Dimensions.get('window').width
+export const windowWidth = Dimensions.get('screen').width
 
 const styles = StyleSheet.create({
     img: {

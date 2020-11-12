@@ -3,14 +3,18 @@ import {createAppContainer} from 'react-navigation'
 import AlbumDetailsScreen from "../components/screens/AlbumDetailsScreen";
 import AlbumsScreen from "../components/screens/AlbumsScreen/AlbumsScreen";
 import PhotoDetailsScreen from "../components/screens/PhotoDetailsScreen";
+import Header from '../components/common/Header'
+import React from 'react'
 
 
 const screens = {
     Home: {
         screen: AlbumsScreen,
-        navigationOptions: {
-            title: 'All Albums',
-        }
+        navigationOptions: ({navigation}: any) => {
+            return {
+                headerTitle: () => <Header navigation={navigation} title='All Albums'/>
+            }
+        },
     },
     AlbumDetails: {
         screen: AlbumDetailsScreen,

@@ -13,7 +13,7 @@ const ExternalLink = (props: PropsType) => {
     )
 }
 
-export default React.memo(ExternalLink)
+export default ExternalLink
 
 // STYLES
 const styles = StyleSheet.create({

@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
-import {View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {getUserTC} from '../../../redux/users-reducer';
-import {UsersResponseType} from '../../../api/users-api';
-import {AppRootStateType} from '../../../redux/store';
-import UserAlbums from './AlbumScreenComponents/UserAlbums';
-import {globalStyles} from '../../../styles/global';
+import React, {useEffect} from 'react'
+import {View} from 'react-native'
+import {useDispatch, useSelector} from 'react-redux'
+import {getUserTC} from '../../../redux/users-reducer'
+import {UsersResponseType} from '../../../api/users-api'
+import {AppRootStateType} from '../../../redux/store'
+import UserAlbums from './AlbumScreenComponents/UserAlbums'
+import {globalStyles} from '../../../styles/global'
 
 
 const AlbumsScreen = ({navigation}: any) => {
@@ -27,7 +27,8 @@ const AlbumsScreen = ({navigation}: any) => {
 
     return (
         <View style={globalStyles.container}>
-            {currentUser && <UserAlbums id={currentUser.id} pressHandler={pressHandler} photosPressHandler={photosPressHandler}/>}
+            {currentUser &&
+            <UserAlbums id={currentUser.id} pressHandler={pressHandler} photosPressHandler={photosPressHandler}/>}
         </View>
     )
 }

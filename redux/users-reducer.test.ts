@@ -100,7 +100,7 @@ test('All users should be loaded', () => {
     expect(endState.usersData[1].username).toBe('Kamren')
 })
 
-test('Current Single User should be loaded', () => {
+test('Current single User should be loaded', () => {
 
     const action = loadCurrentUserAC(newUser)
     const endState = usersReducer(initState, action)
